@@ -25,6 +25,7 @@ $(function () {
 
     function ajaxSort() {
         $(".goods__wrapper").html("");
+        $(".goods__wrapper").append("<img src=\"img/Animation.gif\" id=\"animation\">");
         $.ajax({
             url: "sort.php",
             type: "GET",
@@ -44,20 +45,25 @@ $(function () {
             }),
             dataType: "html",
             beforeSend: function () {
-
+                $("#animation").css("display:block");
             },
             success: function (data) {
-                $(".goods__wrapper").html(data);
-                let titles = document.querySelectorAll('.goods__title');
-                titles.forEach(function (item) {
-                    if (item.textContent.length < 70) {
-                        return;
-                    } else {
-                        const str = item.textContent.slice(0, 71) + '...';
-                        item.textContent = str;
-                    }
-                });
-                start ("./script.js");
+                
+                timer=setTimeout(() => {
+                    $("#animation").css("display:none");
+                    $(".goods__wrapper").html(data);
+                    let titles = document.querySelectorAll('.goods__title');
+                    titles.forEach(function (item) {
+                        if (item.textContent.length < 70) {
+                            return;
+                        } else {
+                            const str = item.textContent.slice(0, 71) + '...';
+                            item.textContent = str;
+                        }
+                    });
+                    start ("./script.js");  
+                }, 1500);
+                
             }
         });
     }
@@ -75,6 +81,7 @@ $(function () {
 
             },
             success: function (data) {
+
                 if(data!=""){
                     $("#header-search").html(data);
                     $(".search__input").css("border-bottom-style","none");

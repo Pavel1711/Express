@@ -15,7 +15,7 @@ function start(url){
 		empty = cartWrapper.querySelector('.empty');
 
 	let inputGoods = document.querySelectorAll(".inputGoods");
-
+	
 	textInput();
 	//Перевод текста в input	
 	function textInput() {
