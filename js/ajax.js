@@ -44,24 +44,25 @@ $(function () {
                 descending: $(".descending").is(':disabled'),
             }),
             dataType: "html",
-            beforeSend: function () {
-                $("#animation").css("display:block");
-            },
             success: function (data) {
-                
                 timer=setTimeout(() => {
-                    $("#animation").css("display:none");
-                    $(".goods__wrapper").html(data);
-                    let titles = document.querySelectorAll('.goods__title');
-                    titles.forEach(function (item) {
-                        if (item.textContent.length < 70) {
-                            return;
-                        } else {
-                            const str = item.textContent.slice(0, 71) + '...';
-                            item.textContent = str;
-                        }
-                    });
-                    start ("./script.js");  
+                    if(data!=""){
+                        $(".goods__wrapper").html(data);
+                        let titles = document.querySelectorAll('.goods__title');
+                        titles.forEach(function (item) {
+                            if (item.textContent.length < 70) {
+                                return;
+                            } else {
+                                const str = item.textContent.slice(0, 71) + '...';
+                                item.textContent = str;
+                            }
+                        });
+                        start ("./script.js");  
+                    }else{
+                        $(".goods__wrapper").html("");
+                        $(".goods__wrapper").append("<h2>Нет товаров по указанным критериям</h2>");
+                    }
+                    
                 }, 1500);
                 
             }
