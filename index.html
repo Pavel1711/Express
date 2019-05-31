@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello express</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="logo">
+                    <img src="logo/logo.svg" alt="logo">
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <form class="search" action="#">
+                        <input type="text" placeholder="Я ищу..." class="search__input">
+                        <button>
+                            <img src="icons/glass.svg" alt="search">
+                        </button>
+                    </form>
+                    <div id="header-search">
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="nav">
+                        <div class="nav__item">
+                            <img src="icons/like.svg" alt="like">
+                        </div>
+                        <div class="nav__title">Избранное</div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="nav" id="cart">
+                        <div class="nav__item">
+                            <img src="icons/cart.svg" alt="cart">
+                            <div class="nav__badge">0</div>
+                        </div>
+                        <div class="nav__title">Корзина</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="goods row d-flex justify-content-center">
+        <div class="col-xl-2 sorting sticky-top">
+            <form action="kategory.php" method="GET">
+                <h3>Выбор товара</h3>
+                <div class="form-group-goods">
+                    <p>
+                        <input id="goodsOne" class="form-check-input check-goods form-check" type="checkbox" checked>
+                        <label for="my-input" class="form-check-label">Смартфоны</label>
+                    </p>
+                    <p>
+                        <input id="goodsTwo" class="form-check-input check-goods form-check" type="checkbox" checked>
+                        <label for="my-input" class="form-check-label">Ноутбуки</label>
+                    </p>
+                    <p>
+                        <input id="goodsThree" class="form-check-input check-goods form-check" type="checkbox" checked>
+                        <label for="my-input" class="form-check-label">Планшеты</label>
+                    </p>
+                    <p>
+                        <input id="goodsFour" class="form-check-input check-goods form-check" type="checkbox" checked>
+                        <label for="my-input" class="form-check-label">Колонки</label>
+                    </p>
+                </div>
+                <h3>Цена</h3>
+                <p class="d-flex justify-content-between">
+                    От<input id="priceStart" class="form-control form-check" type="text" value="0">
+                    До<input id="priceEnd" class="form-control form-check" type="text" value="99999">
+                </p>
+                <h3>Цвет</h3>
+                <div class="form-check-color">
+                    <p>
+                        <input id="colorBlack" class="form-check-input check-color form-check" type="checkbox" checked>
+                        <label for="my-input" class="form-check-label">Черный</label>
+                    </p>
+                    <p>
+                        <input id="colorWhite" class="form-check-input check-color form-check" type="checkbox" checked>
+                        <label for="my-input" class="form-check-label">Белый</label>
+                    </p>
+                    <p>
+                        <input id="colorGrey" class="form-check-input check-color form-check" type="checkbox" checked>
+                        <label for="my-input" class="form-check-label">Серый</label>
+                    </p>
+                    <p>
+                        <input id="colorBlue" class="form-check-input check-color form-check" type="checkbox" checked>
+                        <label for="my-input" class="form-check-label">Синий</label>
+                    </p>
+                </div>
+            </form>
+        </div>
+        <div class=" col-xl-10">
+            <div class="breadcrumbs">
+                <span>Сортировать</span>
+                <button class="btn btn-sm btn-danger font-weight-bold increase data-toggle=" button"
+                    aria-pressed="false" autocomplete="off"" type=" button">по возрастанию</button>
+                <button class="btn btn-sm btn-danger font-weight-bold descending data-toggle=" button"
+                    aria-pressed="false" autocomplete="off"" type=" button">по убыванию</button>
+            </div>
+            <div class="goods__wrapper">
+
+            </div>
+        </div>
+    </div>
+    <form action="form.php" method="GET">
+        <div class="cart">
+            <div class="cart__body">
+                <div class="cart__title">Корзина</div>
+                <div class="cart__total">Общая сумма: <span>0</span> руб</div>
+                <input type="text" class="inputPrice" name="inputPrice" style="display:none">
+                <hr>
+                <div class="cart__wrapper">
+                    <div class="empty">
+                        Ваша корзина пока пуста
+                    </div>
+                </div>
+                <button class="cart__confirm" type="submit">Оформить заказ</button>
+                <div class="cart__close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="confirm">
+        <img src="icons/confirm.svg" alt="confirm">
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/ajax.js"></script>
+</body>
+
+</html>
