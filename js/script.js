@@ -15,11 +15,10 @@ function start(url){
 		empty = cartWrapper.querySelector('.empty');
 
 	let inputGoods = document.querySelectorAll(".inputGoods");
-	
 	textInput();
 	//Перевод текста в input	
 	function textInput() {
-		for (let i = 0; i < 8; i++) {
+		for (let i = 0; i < inputGoods.length; i++) {
 			inputGoods[i].value = titlesText[i].textContent;
 		}
 	}

@@ -25,7 +25,7 @@ $(function () {
 
     function ajaxSort() {
         $(".goods__wrapper").html("");
-        $(".goods__wrapper").append("<img src=\"img/Animation.gif\" id=\"animation\">");
+        $(".goods__wrapper").append("<div class=\"d-flex justify-content-center align-items-center w-100\"><img src=\"img/Animation.gif\" id=\"animation\"></div>");
         $.ajax({
             url: "sort.php",
             type: "GET",
@@ -60,10 +60,10 @@ $(function () {
                         start ("./script.js");  
                     }else{
                         $(".goods__wrapper").html("");
-                        $(".goods__wrapper").append("<h2>Нет товаров по указанным критериям</h2>");
+                        $(".goods__wrapper").append("<div class=\"d-flex justify-content-center align-items-center w-100\"><h2>Нет товаров по указанным критериям</h2></div>");
                     }
                     
-                }, 1500);
+                }, 750);
                 
             }
         });

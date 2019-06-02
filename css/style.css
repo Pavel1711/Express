@@ -159,7 +159,7 @@ header {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     padding-left: 100px;
-    min-height:400px;
+    min-height: 400px;
 }
 
 .goods__item {
@@ -347,7 +347,8 @@ header {
 }
 
 .formInformation {
-    height: 100vh;
+    padding: 50px;
+    min-height: 100vh;
     text-align: center;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -363,6 +364,10 @@ header {
     -ms-flex-direction: column;
     flex-direction: column;
     background: rgba(190, 102, 61, 0.445);
+}
+
+.exit {
+    padding-top: 50px;
 }
 
 .information {
