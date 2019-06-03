@@ -25,6 +25,7 @@ $(function () {
 
     function ajaxSort() {
         $(".goods__wrapper").html("");
+        $(".goods__wrapper").append("<div class=\"d-flex justify-content-center align-items-center w-100\"><img src=\"img/Animation.gif\" id=\"animation\"></div>");
         $.ajax({
             url: "sort.php",
             type: "GET",
@@ -43,21 +44,27 @@ $(function () {
                 descending: $(".descending").is(':disabled'),
             }),
             dataType: "html",
-            beforeSend: function () {
-
-            },
             success: function (data) {
-                $(".goods__wrapper").html(data);
-                let titles = document.querySelectorAll('.goods__title');
-                titles.forEach(function (item) {
-                    if (item.textContent.length < 70) {
-                        return;
-                    } else {
-                        const str = item.textContent.slice(0, 71) + '...';
-                        item.textContent = str;
+                timer=setTimeout(() => {
+                    if(data!=""){
+                        $(".goods__wrapper").html(data);
+                        let titles = document.querySelectorAll('.goods__title');
+                        titles.forEach(function (item) {
+                            if (item.textContent.length < 70) {
+                                return;
+                            } else {
+                                const str = item.textContent.slice(0, 71) + '...';
+                                item.textContent = str;
+                            }
+                        });
+                        start ("./script.js");  
+                    }else{
+                        $(".goods__wrapper").html("");
+                        $(".goods__wrapper").append("<div class=\"d-flex justify-content-center align-items-center w-100\"><h2>Нет товаров по указанным критериям</h2></div>");
                     }
-                });
-                start ("./script.js");
+                    
+                }, 750);
+                
             }
         });
     }
@@ -75,6 +82,7 @@ $(function () {
 
             },
             success: function (data) {
+
                 if(data!=""){
                     $("#header-search").html(data);
                     $(".search__input").css("border-bottom-style","none");
