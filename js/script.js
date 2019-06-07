@@ -1,4 +1,4 @@
-function start(url){
+function start(url) {
 	const cartWrapper = document.querySelector('.cart__wrapper'),
 		cart = document.querySelector('.cart'),
 		close = document.querySelector('.cart__close'),
@@ -12,7 +12,9 @@ function start(url){
 		titlesText = document.querySelectorAll('.goods__item p'),
 		inputPrice = document.querySelector('.inputPrice'),
 		cartConfirm = document.querySelector('.cart__confirm'),
-		empty = cartWrapper.querySelector('.empty');
+		empty = cartWrapper.querySelector('.empty'),
+		authentication = document.querySelector('#authentication'),
+		auth = document.querySelector('.auth');
 
 	let inputGoods = document.querySelectorAll(".inputGoods");
 	textInput();
@@ -22,6 +24,63 @@ function start(url){
 			inputGoods[i].value = titlesText[i].textContent;
 		}
 	}
+
+	authentication.addEventListener('click', (e) => {
+		let auth_block = document.querySelectorAll('.auth_block p span'),
+			authClose = document.querySelector('.auth__close'),
+			btnSign = document.querySelector('.btnSign'),
+			btnRegister = document.querySelector('.btnRegister'),
+			name = document.querySelector('#name'),
+			surname = document.querySelector('#surname');
+			
+		function visibleName(){
+			name.style.display = "block";
+			surname.style.display = "block";
+		}
+		
+		function noVisibleName(){
+			name.style.display = "none";
+			surname.style.display = "none";
+		}
+			
+		document.body.style.overflow = 'hidden';
+		auth.style.display = "block";
+
+		if(e.srcElement.id == "sign"){
+			auth_block[0].style.borderBottom = "2px solid red";
+			btnSign.style.display = "block";
+			btnRegister.style.display = "none";
+			noVisibleName();
+		}else if(e.srcElement.id == "register"){
+			auth_block[1].style.borderBottom = "2px solid red";
+			btnSign.style.display = "none";
+			btnRegister.style.display = "block";
+			visibleName()
+		}
+
+		auth_block[0].addEventListener('click',()=>{
+			auth_block[0].style.borderBottom = "2px solid red";
+			auth_block[1].style.borderBottom = "";
+			btnSign.style.display = "block";
+			btnRegister.style.display = "none";
+			noVisibleName();
+		})
+
+		auth_block[1].addEventListener('click',()=>{
+			auth_block[1].style.borderBottom = "2px solid red";
+			auth_block[0].style.borderBottom = "";
+			btnSign.style.display = "none";
+			btnRegister.style.display = "block";
+			visibleName()
+		})
+
+		authClose.addEventListener('click',()=>{
+			auth.style.display = "none";
+			auth_block[0].style.borderBottom = "";
+			auth_block[1].style.borderBottom = "";
+			document.body.style.overflow = '';
+		})
+	})
 
 	function openCart() {
 		cart.style.display = 'block';
