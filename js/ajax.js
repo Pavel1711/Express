@@ -19,7 +19,13 @@ $(function () {
         ajaxSort();
     });
     
-    $(".form-check").bind("change", function () {
+    $(".form-input").bind("keyup", function (e) {
+        if(e.target.value != ""){
+            ajaxSort();
+        }
+    });
+
+    $(".form-check").bind("click", function () {
         ajaxSort();
     });
 
@@ -45,6 +51,10 @@ $(function () {
             }),
             dataType: "html",
             success: function (data) {
+                $("#header-search").css("display","none");
+                $("#header-search").html("");
+                $(".search__input").css("border-bottom-style","solid");
+                document.documentElement.scrollTop="0";
                 timer=setTimeout(() => {
                     if(data!=""){
                         $(".goods__wrapper").html(data);
@@ -62,9 +72,7 @@ $(function () {
                         $(".goods__wrapper").html("");
                         $(".goods__wrapper").append("<div class=\"d-flex justify-content-center align-items-center w-100\"><h2>Нет товаров по указанным критериям</h2></div>");
                     }
-                    
                 }, 750);
-                
             }
         });
     }
@@ -89,9 +97,7 @@ $(function () {
                     $("#header-search").css("display","block");
                 }else{
                     $("#header-search").css("display","none");
-                    $("#header-search").html("");
                     $(".search__input").css("border-bottom-style","solid");
-
                 }
                 start ("./script.js");
             }
