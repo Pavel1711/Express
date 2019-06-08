@@ -69,8 +69,8 @@
                 </div>
                 <h3>Цена</h3>
                 <p class="d-flex justify-content-between">
-                    От<input id="priceStart" class="form-control form-check" type="text" value="0">
-                    До<input id="priceEnd" class="form-control form-check" type="text" value="99999">
+                    От<input id="priceStart" class="form-control form-input" type="text" value="0">
+                    До<input id="priceEnd" class="form-control form-input" type="text" value="99999">
                 </p>
                 <h3>Цвет</h3>
                 <div class="form-check-color">
@@ -133,19 +133,37 @@
 
         <div class="auth_block ">
             <div class="logo w-100 d-flex justify-content-center align-items-center pb-2">
-                    <img src="logo/logo.svg" alt="logo" style="width:150px">
+                <img src="logo/logo.svg" alt="logo" style="width:150px">
             </div>
 
             <p class="d-flex justify-content-around"><span>Войти</span> <span>Зарегистрироваться</span></p>
             <div class="d-flex justify-content-center align-items-center flex-column">
-                <form method="GET" action="" class="d-flex justify-content-around align-items-center flex-column">
-                    <input class="form-control" id="name" type="text" name="" placeholder="Введите имя">
-                    <input class="form-control" id="surname" type="text" name="" placeholder="Введите фамилию">
-                    <input class="form-control" type="text" name="" placeholder="Введите email или логин">
-                    <input class="form-control" type="password" name="" placeholder="Введите пароль">
-                    <button class="btn btn-danger w-100 btnSign" type="button">Войти</button>
-                    <button class="btn btn-danger w-100 btnRegister" type="button">Зарегистрироваться</button>
-                </form>
+                <div id="authForm" class="w-100 justify-content-center align-items-center">
+                    <form method="POST" action="auth.php"
+                        class="d-flex justify-content-around align-items-center flex-column">
+                        <input class="form-control" type="text" name="email" placeholder="Введите email или логин"
+                            required>
+                        <input class="form-control" type="password" name="password" placeholder="Введите пароль"
+                            required>
+                        <button class="btn btn-danger w-100" type="submit">Войти</button>
+                    </form>
+                </div>
+                <div id="registerForm" class="w-100 justify-content-center align-items-center">
+                    <form method="POST" action="register.php"
+                        class="d-flex justify-content-around align-items-center flex-column">
+                        <input class="form-control" id="name" type="text" name="name" placeholder="Введите имя"
+                            required>
+                        <input class="form-control" id="surname" type="text" name="surname"
+                            placeholder="Введите фамилию" required>
+                        <input class="form-control" type="text" name="email" placeholder="Введите email или логин"
+                            required>
+                        <input class="form-control" type="password" name="password" placeholder="Введите пароль"
+                            required>
+                        <button class="btn btn-danger w-100" type="submit">Зарегистрироваться</button>
+                    </form>
+                </div>
+
+
                 <div class="auth__close">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -156,7 +174,7 @@
             </div>
 
         </div>
-        
+
     </div>
 
     <div class="confirm">

@@ -17,6 +17,7 @@ function start(url) {
 		auth = document.querySelector('.auth');
 
 	let inputGoods = document.querySelectorAll(".inputGoods");
+
 	textInput();
 	//Перевод текста в input	
 	function textInput() {
@@ -28,11 +29,14 @@ function start(url) {
 	authentication.addEventListener('click', (e) => {
 		let auth_block = document.querySelectorAll('.auth_block p span'),
 			authClose = document.querySelector('.auth__close'),
-			btnSign = document.querySelector('.btnSign'),
-			btnRegister = document.querySelector('.btnRegister'),
+			authForm = document.querySelector('#authForm'),
+			registerForm = document.querySelector('#registerForm'),
 			name = document.querySelector('#name'),
 			surname = document.querySelector('#surname');
-			
+
+		document.querySelector("#header-search").style.display="none";
+		document.querySelector(".search__input").style.borderBottomStyle="solid";
+
 		function visibleName(){
 			name.style.display = "block";
 			surname.style.display = "block";
@@ -48,29 +52,29 @@ function start(url) {
 
 		if(e.srcElement.id == "sign"){
 			auth_block[0].style.borderBottom = "2px solid red";
-			btnSign.style.display = "block";
-			btnRegister.style.display = "none";
+			authForm.style.display = "flex";
+			registerForm.style.display = "none";
 			noVisibleName();
 		}else if(e.srcElement.id == "register"){
 			auth_block[1].style.borderBottom = "2px solid red";
-			btnSign.style.display = "none";
-			btnRegister.style.display = "block";
+			authForm.style.display = "none";
+			registerForm.style.display = "flex";
 			visibleName()
 		}
 
 		auth_block[0].addEventListener('click',()=>{
 			auth_block[0].style.borderBottom = "2px solid red";
 			auth_block[1].style.borderBottom = "";
-			btnSign.style.display = "block";
-			btnRegister.style.display = "none";
+			authForm.style.display = "flex";
+			registerForm.style.display = "none";
 			noVisibleName();
 		})
 
 		auth_block[1].addEventListener('click',()=>{
 			auth_block[1].style.borderBottom = "2px solid red";
 			auth_block[0].style.borderBottom = "";
-			btnSign.style.display = "none";
-			btnRegister.style.display = "block";
+			authForm.style.display = "none";
+			registerForm.style.display = "flex";
 			visibleName()
 		})
 
@@ -85,6 +89,8 @@ function start(url) {
 	function openCart() {
 		cart.style.display = 'block';
 		document.body.style.overflow = 'hidden';
+		document.querySelector("#header-search").style.display="none";
+		document.querySelector(".search__input").style.borderBottomStyle="solid";
 	}
 
 	function closeCart() {
@@ -100,6 +106,9 @@ function start(url) {
 			let item = products[i].cloneNode(true),
 				trigger = item.querySelector('button'),
 				removeBtn = document.createElement('div');
+
+			document.querySelector("#header-search").style.display="none";
+			document.querySelector(".search__input").style.borderBottomStyle="solid";	
 
 			trigger.remove();
 			showConfirm();
@@ -178,6 +187,6 @@ function start(url) {
 				calcTotal();
 			});
 		});
-	}
+	}	
 
 }
