@@ -16,7 +16,13 @@ function start(url) {
 		authentication = document.querySelector('#authentication'),
 		auth = document.querySelector('.auth');
 
-	let inputGoods = document.querySelectorAll(".inputGoods");
+	let inputGoods = document.querySelectorAll(".inputGoods"),
+		auth_block = document.querySelectorAll('.auth_block p span'),
+		authClose = document.querySelector('.auth__close'),
+		authForm = document.querySelector('#authForm'),
+		registerForm = document.querySelector('#registerForm'),
+		name = document.querySelector('#name'),
+		surname = document.querySelector('#surname');
 
 	textInput();
 	//Перевод текста в input	
@@ -27,42 +33,36 @@ function start(url) {
 	}
 
 	authentication.addEventListener('click', (e) => {
-		let auth_block = document.querySelectorAll('.auth_block p span'),
-			authClose = document.querySelector('.auth__close'),
-			authForm = document.querySelector('#authForm'),
-			registerForm = document.querySelector('#registerForm'),
-			name = document.querySelector('#name'),
-			surname = document.querySelector('#surname');
 
-		document.querySelector("#header-search").style.display="none";
-		document.querySelector(".search__input").style.borderBottomStyle="solid";
+		document.querySelector("#header-search").style.display = "none";
+		document.querySelector(".search__input").style.borderBottomStyle = "solid";
 
-		function visibleName(){
+		function visibleName() {
 			name.style.display = "block";
 			surname.style.display = "block";
 		}
-		
-		function noVisibleName(){
+
+		function noVisibleName() {
 			name.style.display = "none";
 			surname.style.display = "none";
 		}
-			
+
 		document.body.style.overflow = 'hidden';
 		auth.style.display = "block";
 
-		if(e.srcElement.id == "sign"){
+		if (e.srcElement.id == "sign") {
 			auth_block[0].style.borderBottom = "2px solid red";
 			authForm.style.display = "flex";
 			registerForm.style.display = "none";
 			noVisibleName();
-		}else if(e.srcElement.id == "register"){
+		} else if (e.srcElement.id == "register") {
 			auth_block[1].style.borderBottom = "2px solid red";
 			authForm.style.display = "none";
 			registerForm.style.display = "flex";
 			visibleName()
 		}
 
-		auth_block[0].addEventListener('click',()=>{
+		auth_block[0].addEventListener('click', () => {
 			auth_block[0].style.borderBottom = "2px solid red";
 			auth_block[1].style.borderBottom = "";
 			authForm.style.display = "flex";
@@ -70,7 +70,7 @@ function start(url) {
 			noVisibleName();
 		})
 
-		auth_block[1].addEventListener('click',()=>{
+		auth_block[1].addEventListener('click', () => {
 			auth_block[1].style.borderBottom = "2px solid red";
 			auth_block[0].style.borderBottom = "";
 			authForm.style.display = "none";
@@ -78,19 +78,25 @@ function start(url) {
 			visibleName()
 		})
 
-		authClose.addEventListener('click',()=>{
-			auth.style.display = "none";
-			auth_block[0].style.borderBottom = "";
-			auth_block[1].style.borderBottom = "";
-			document.body.style.overflow = '';
+		authClose.addEventListener('click', () => {
+			authBlockCLose();
 		})
 	})
+
+	authBlockCLose();
+
+	function authBlockCLose() {
+		auth.style.display = "none";
+		auth_block[0].style.borderBottom = "";
+		auth_block[1].style.borderBottom = "";
+		document.body.style.overflow = '';
+	}
 
 	function openCart() {
 		cart.style.display = 'block';
 		document.body.style.overflow = 'hidden';
-		document.querySelector("#header-search").style.display="none";
-		document.querySelector(".search__input").style.borderBottomStyle="solid";
+		document.querySelector("#header-search").style.display = "none";
+		document.querySelector(".search__input").style.borderBottomStyle = "solid";
 	}
 
 	function closeCart() {
@@ -107,8 +113,8 @@ function start(url) {
 				trigger = item.querySelector('button'),
 				removeBtn = document.createElement('div');
 
-			document.querySelector("#header-search").style.display="none";
-			document.querySelector(".search__input").style.borderBottomStyle="solid";	
+			document.querySelector("#header-search").style.display = "none";
+			document.querySelector(".search__input").style.borderBottomStyle = "solid";
 
 			trigger.remove();
 			showConfirm();
@@ -144,7 +150,7 @@ function start(url) {
 	function showConfirm() {
 		confirm.style.display = 'block';
 		let counter = 100;
-		const id = setInterval(frame, 10);
+		const id = setInterval(frame,10);
 
 		function frame() {
 			if (counter == 10) {
@@ -187,6 +193,6 @@ function start(url) {
 				calcTotal();
 			});
 		});
-	}	
+	}
 
 }

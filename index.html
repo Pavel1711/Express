@@ -139,8 +139,8 @@
             <p class="d-flex justify-content-around"><span>Войти</span> <span>Зарегистрироваться</span></p>
             <div class="d-flex justify-content-center align-items-center flex-column">
                 <div id="authForm" class="w-100 justify-content-center align-items-center">
-                    <form method="POST" action="auth.php"
-                        class="d-flex justify-content-around align-items-center flex-column">
+                    <form method="POST" action="auth.php" name="auth_form"
+                        class="d-flex justify-content-around align-items-center flex-column" id="auth_form">
                         <input class="form-control" type="text" name="email" placeholder="Введите email или логин"
                             required>
                         <input class="form-control" type="password" name="password" placeholder="Введите пароль"
@@ -149,8 +149,8 @@
                     </form>
                 </div>
                 <div id="registerForm" class="w-100 justify-content-center align-items-center">
-                    <form method="POST" action="register.php"
-                        class="d-flex justify-content-around align-items-center flex-column">
+                    <form method="POST" action="register.php" name="register_form"
+                        class="d-flex justify-content-around align-items-center flex-column" id="register_form">
                         <input class="form-control" id="name" type="text" name="name" placeholder="Введите имя"
                             required>
                         <input class="form-control" id="surname" type="text" name="surname"
@@ -183,6 +183,7 @@
     <script src="js/jquery.js"></script>
     <script src="js/script.js"></script>
     <script src="js/ajax.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>

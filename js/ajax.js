@@ -104,4 +104,46 @@ $(function () {
         });
     }
 
+    $('#register_form').submit(function(e){
+        e.preventDefault();
+        $.ajax({
+            url: "register.php",
+            type: "POST",
+            data: $('#register_form').serialize(),
+            success: function(response) {
+                if(response == 1){
+                    swal({
+                        title: "Вы успешно зарегистрировались!",
+                        icon: "success",
+                        button: "Хорошо!",
+                      })
+                      .then((value) => {
+                        if(value==true){
+                            $('body').css("overflow","");
+                        }
+                      }); 
+                      start ("./script.js");
+                      $('body').css("overflow","hidden");
+                    
+                }else if(response == 0){
+                    swal({
+                        title: "Указанный логин уже существует",
+                        icon: "error",
+                        button: "Исправить",
+                      })
+                      .then((value) => {
+                        if(value==true){
+                            $('body').css("overflow","");
+                        }
+                      }); 
+                      start ("./script.js");
+                      $('body').css("overflow","hidden");
+                }
+            },
+            error: function(response) {
+            alert("error");
+            }
+        });
+    });
+
 })
