@@ -38,10 +38,27 @@
                         <div class="nav__title">Корзина</div>
                     </div>
                 </div>
-                <div class="col-lg-3 d-flex justify-content-between" id="authentication">
-                    <button class="btn btn-danger" id="sign" type="button">Войти</button>
-                    <button class="btn btn-danger" id="register" type="button">Зарегистрироваться</button>
-                </div>
+                <?
+                $link=mysqli_connect("localhost", "root", "", "express");
+
+                if (isset($_COOKIE['id']) and isset($_COOKIE['hash'])){
+                    $query = mysqli_query($link, "SELECT *FROM profile WHERE user_id = '".intval($_COOKIE['id'])."' LIMIT 1");
+                    $data = mysqli_fetch_assoc($query);
+                    if(($data['hash'] !== $_COOKIE['hash']) or ($data['id'] !== $_COOKIE['id'])){
+                        setcookie("id", "", time() - 3600*24*30*12, "/");
+                        setcookie("hash", "", time() - 3600*24*30*12, "/");
+                        print "Хм, что-то не получилось";
+                    }else{
+                        echo(
+                            "<div class=\"col-lg-3 d-flex justify-content-between\" id=\"authentication\">
+                            <button class=\"btn btn-danger\" id=\"sign\" type=\"button\">Войти</button>
+                            <button class=\"btn btn-danger\" id=\"register\" type=\"button\">Зарегистрироваться</button>
+                            </div>"
+                        );
+                    }
+                }
+                    
+                ?>
             </div>
         </div>
     </header>
@@ -145,6 +162,7 @@
                             required>
                         <input class="form-control" type="password" name="password" placeholder="Введите пароль"
                             required>
+                            <img src="img/eye.png" class="eye"> 
                         <button class="btn btn-danger w-100" type="submit">Войти</button>
                     </form>
                 </div>
@@ -157,8 +175,8 @@
                             placeholder="Введите фамилию" required>
                         <input class="form-control" type="text" name="email" placeholder="Введите email или логин"
                             required>
-                        <input class="form-control" type="password" name="password" placeholder="Введите пароль"
-                            required>
+                            <input class="form-control" type="password" name="password" placeholder="Введите пароль"required>
+                            <img src="img/eye.png" class="eye"> 
                         <button class="btn btn-danger w-100" type="submit">Зарегистрироваться</button>
                     </form>
                 </div>
