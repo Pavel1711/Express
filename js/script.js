@@ -43,20 +43,22 @@ function start(url) {
 
 	function showPassword(auth=0,reg=0){
 		let pass=document.querySelectorAll("input[name=\"password\"]");
-		console.log(pass[0].type);
 		if(auth==1){
 			if(pass[0].type == "password"){
 				pass[0].type = "text";
+				eye[0].setAttribute("src","img/eyeNone.png");
 			}else if(pass[0].type == "text"){
 				pass[0].type = "password";
+				eye[0].setAttribute("src","img/eye.png");
 			}
 		}
-		console.log(eye);
 		if(reg==1){
 			if(pass[1].type == "password"){
 				pass[1].type = "text";
+				eye[1].setAttribute("src","img/eyeNone.png");
 			}else if(pass[1].type == "text"){
 				pass[1].type = "password";
+				eye[1].setAttribute("src","img/eye.png");
 			}
 		}
 
