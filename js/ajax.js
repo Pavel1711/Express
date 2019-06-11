@@ -124,7 +124,12 @@ $(function () {
                       }); 
                       start ("./script.js");
                       $('body').css("overflow","hidden");
-                    
+                      let email = $('#register_form input[name="email"]').val(),
+                          password = $('#register_form input[name="password"]').val();
+
+                      $('#auth_form input[name="email"]').val(email);
+                      $('#auth_form input[name="password"]').val(password);
+                      $('#register_form .form-control').val("");
                 }else if(response == 0){
                     swal({
                         title: "Указанный логин уже существует",
@@ -136,8 +141,28 @@ $(function () {
                             $('body').css("overflow","");
                         }
                       }); 
-                      start ("./script.js");
-                      $('body').css("overflow","hidden");
+                }else if(response == -1){
+                    swal({
+                        title: "Логин может состоять только из букв английского алфавита и цифр",
+                        icon: "error",
+                        button: "Исправить",
+                      })
+                      .then((value) => {
+                        if(value==true){
+                            $('body').css("overflow","");
+                        }
+                      }); 
+                }else if(response == -2){
+                    swal({
+                        title: "Логин должен быть не меньше 3-х символов и не больше 30",
+                        icon: "error",
+                        button: "Исправить",
+                      })
+                      .then((value) => {
+                        if(value==true){
+                            $('body').css("overflow","");
+                        }
+                      }); 
                 }
             },
             error: function(response) {
