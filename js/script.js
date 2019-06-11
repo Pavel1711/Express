@@ -22,7 +22,8 @@ function start(url) {
 		authForm = document.querySelector('#authForm'),
 		registerForm = document.querySelector('#registerForm'),
 		name = document.querySelector('#name'),
-		surname = document.querySelector('#surname');
+		surname = document.querySelector('#surname'),
+		eye = document.querySelectorAll('.eye');
 
 	textInput();
 	//Перевод текста в input	
@@ -31,6 +32,36 @@ function start(url) {
 			inputGoods[i].value = titlesText[i].textContent;
 		}
 	}
+
+	eye[0].addEventListener('click',() => {
+		showPassword(1,0);	
+	})
+
+	eye[1].addEventListener('click',() => {
+		showPassword(0,1);	
+	})
+
+	function showPassword(auth=0,reg=0){
+		let pass=document.querySelectorAll("input[name=\"password\"]");
+		console.log(pass[0].type);
+		if(auth==1){
+			if(pass[0].type == "password"){
+				pass[0].type = "text";
+			}else if(pass[0].type == "text"){
+				pass[0].type = "password";
+			}
+		}
+		console.log(eye);
+		if(reg==1){
+			if(pass[1].type == "password"){
+				pass[1].type = "text";
+			}else if(pass[1].type == "text"){
+				pass[1].type = "password";
+			}
+		}
+
+	}
+
 
 	authentication.addEventListener('click', (e) => {
 
@@ -84,7 +115,7 @@ function start(url) {
 	})
 
 	authBlockCLose();
-
+	
 	function authBlockCLose() {
 		auth.style.display = "none";
 		auth_block[0].style.borderBottom = "";
@@ -150,7 +181,7 @@ function start(url) {
 	function showConfirm() {
 		confirm.style.display = 'block';
 		let counter = 100;
-		const id = setInterval(frame,10);
+		const id = setInterval(frame, 10);
 
 		function frame() {
 			if (counter == 10) {
