@@ -52,7 +52,7 @@
                         echo(
                             "<div class=\"col-lg-4 d-flex justify-content-between\">
                             <button class=\"btn btn-danger\" id=\"profile\" type=\"button\">Мой профиль</button>
-                            <button class=\"btn btn-danger\" id=\"myOrders\" type=\"button\">Мои заказы</button>
+                            <a href=\"orders.php\"><button class=\"btn btn-danger\" id=\"myOrders\" type=\"button\">Мои заказы</button></a>
                             <a href=\"exit.php\"><button class=\"btn btn-danger\" id=\"exit\" type=\"button\" name=\"logout\">Выход</button></a>
                             </div>"
                         );   

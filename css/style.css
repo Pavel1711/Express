@@ -3,28 +3,30 @@ body {
     overflow-x: hidden;
 }
 
-::-webkit-scrollbar{
-    width:12px;
+::-webkit-scrollbar {
+    width: 12px;
 }
 
-::-webkit-scrollbar-thumb{
-    border-width:1px 1px 1px 2px;
+::-webkit-scrollbar-thumb {
+    border-width: 1px 1px 1px 2px;
     border-color: rgb(220, 62, 42);
     background-color: rgb(220, 62, 42);
 }
 
-::-webkit-scrollbar-track{
-    border-width:0;
+::-webkit-scrollbar-track {
+    border-width: 0;
 }
 
-::-webkit-scrollbar-track:hover{
-    border-left: solid 1px rgb(220, 62, 42);;
+::-webkit-scrollbar-track:hover {
+    border-left: solid 1px rgb(220, 62, 42);
+    ;
     background-color: rgba(178, 178, 178, 0.4);
 }
 
 header {
-    padding-bottom: 60px;
-    border-bottom: 1px solid rgb(220, 62, 42);;
+    padding-bottom: 45px;
+    border-bottom: 1px solid rgb(220, 62, 42);
+    background: white;
 }
 
 .logo {
@@ -268,15 +270,15 @@ header {
     box-shadow: 0 0 15px rgba(220, 62, 42, .7)
 }
 
-.eye{
-    cursor:pointer;
+.eye {
+    cursor: pointer;
     position: absolute;
-    right:30px;
-    bottom:85px;
+    right: 30px;
+    bottom: 85px;
 }
 
-.swal-modal{
-    width:500px;
+.swal-modal {
+    width: 500px;
 }
 
 .auth {
@@ -570,4 +572,60 @@ header {
     width: 18px;
     height: 18px;
     margin-right: 30px !important;
+}
+
+.fon {
+    background: rgb(242, 242, 242);
+    min-height: 100vh;
+}
+
+.order {
+    padding-top: 20px;
+}
+
+.order h1 {
+    margin-bottom: 50px;
+}
+
+.order-sort {
+    padding: 30px;
+    margin-bottom: 40px
+}
+
+#orderAll {
+    max-height: 20000px;
+    background: white;
+}
+
+#orderAll .numOrder {
+    max-height: 20000px;
+}
+
+#orderAll .numOrder .headline {
+    background: rgb(242, 242, 242);
+}
+
+#orderAll .numOrder .headline .moneyOrder{
+    width:140px
+}
+
+#orderAll .numOrder .headline .moneyOrder span {
+    font-size: 20px;
+    color: #e62e04;
+}
+
+#orderAll .numOrder .goodsOrder img {
+    width: 120px;
+    height: 120px;
+}
+
+#orderAll .numOrder .goodsOrder {
+    margin: 20px 0;
+}
+
+#orderAll .numOrder .goodsOrder .priceNumOrder {
+    color: #e62e04;
+    font-size: 18px;
+    width:150px;
+    margin-left:20px;
 }
