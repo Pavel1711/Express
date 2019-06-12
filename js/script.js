@@ -13,7 +13,7 @@ function start(url) {
 		inputPrice = document.querySelector('.inputPrice'),
 		cartConfirm = document.querySelector('.cart__confirm'),
 		empty = cartWrapper.querySelector('.empty'),
-		authentication = document.querySelector('#authentication'),
+		authentication = document.querySelector('#authentication').children,
 		auth = document.querySelector('.auth');
 
 	let inputGoods = document.querySelectorAll(".inputGoods"),
@@ -64,9 +64,8 @@ function start(url) {
 
 	}
 
-
-	authentication.addEventListener('click', (e) => {
-
+	function authBlockShow(e){
+		let inputForm = document.querySelectorAll("#register_form input");
 		document.querySelector("#header-search").style.display = "none";
 		document.querySelector(".search__input").style.borderBottomStyle = "solid";
 
@@ -108,12 +107,27 @@ function start(url) {
 			auth_block[0].style.borderBottom = "";
 			authForm.style.display = "none";
 			registerForm.style.display = "flex";
-			visibleName()
+			visibleName();
+			for(let i = 0; i<inputForm.length; i++){
+				inputForm[i].value = "";
+			}
 		})
 
 		authClose.addEventListener('click', () => {
 			authBlockCLose();
 		})
+	}
+
+	authentication[0].addEventListener('click', (e) => {
+		authBlockShow(e);
+	})
+
+	authentication[1].addEventListener('click', (e) => {
+		authBlockShow(e);
+		let inputForm = document.querySelectorAll("#register_form input");
+		for(let i = 0; i<inputForm.length; i++){
+			inputForm[i].value = "";
+		}
 	})
 
 	authBlockCLose();
