@@ -5,15 +5,14 @@ function start(url) {
 		open = document.querySelector('#cart'),
 		goodsBtn = document.querySelectorAll('.goods__btn'),
 		products = document.querySelectorAll('.goods__item'),
-		confirm = document.querySelector('.confirm'),
 		badge = document.querySelector('.nav__badge'),
 		totalCost = document.querySelector('.cart__total>span'),
 		titles = document.querySelectorAll('.goods__title'),
 		titlesText = document.querySelectorAll('.goods__item p'),
 		inputPrice = document.querySelector('.inputPrice'),
 		cartConfirm = document.querySelector('.cart__confirm'),
+		confirm = document.querySelector('.confirm'),
 		empty = cartWrapper.querySelector('.empty'),
-		authentication = document.querySelector('#authentication').children,
 		auth = document.querySelector('.auth');
 
 	let inputGoods = document.querySelectorAll(".inputGoods"),
@@ -30,41 +29,63 @@ function start(url) {
 	function textInput() {
 		for (let i = 0; i < inputGoods.length; i++) {
 			inputGoods[i].value = titlesText[i].textContent;
+			console.log(inputGoods[i]);
 		}
 	}
 
-	eye[0].addEventListener('click',() => {
-		showPassword(1,0);	
+	child();
+
+	function child() {
+		var element = document.getElementById('authentification');
+		if (element) {
+			var authentification = document.querySelector('#authentification').children;
+			authentification[0].addEventListener('click', (e) => {
+				authBlockShow(e);
+			})
+
+			authentification[1].addEventListener('click', (e) => {
+				authBlockShow(e);
+				let inputForm = document.querySelectorAll("#register_form input");
+				for (let i = 0; i < inputForm.length; i++) {
+					inputForm[i].value = "";
+				}
+			})
+		}
+	}
+
+
+	eye[0].addEventListener('click', () => {
+		showPassword(1, 0);
 	})
 
-	eye[1].addEventListener('click',() => {
-		showPassword(0,1);	
+	eye[1].addEventListener('click', () => {
+		showPassword(0, 1);
 	})
 
-	function showPassword(auth=0,reg=0){
-		let pass=document.querySelectorAll("input[name=\"password\"]");
-		if(auth==1){
-			if(pass[0].type == "password"){
+	function showPassword(auth = 0, reg = 0) {
+		let pass = document.querySelectorAll("input[name=\"password\"]");
+		if (auth == 1) {
+			if (pass[0].type == "password") {
 				pass[0].type = "text";
-				eye[0].setAttribute("src","img/eyeNone.png");
-			}else if(pass[0].type == "text"){
+				eye[0].setAttribute("src", "img/eyeNone.png");
+			} else if (pass[0].type == "text") {
 				pass[0].type = "password";
-				eye[0].setAttribute("src","img/eye.png");
+				eye[0].setAttribute("src", "img/eye.png");
 			}
 		}
-		if(reg==1){
-			if(pass[1].type == "password"){
+		if (reg == 1) {
+			if (pass[1].type == "password") {
 				pass[1].type = "text";
-				eye[1].setAttribute("src","img/eyeNone.png");
-			}else if(pass[1].type == "text"){
+				eye[1].setAttribute("src", "img/eyeNone.png");
+			} else if (pass[1].type == "text") {
 				pass[1].type = "password";
-				eye[1].setAttribute("src","img/eye.png");
+				eye[1].setAttribute("src", "img/eye.png");
 			}
 		}
 
 	}
 
-	function authBlockShow(e){
+	function authBlockShow(e) {
 		let inputForm = document.querySelectorAll("#register_form input");
 		document.querySelector("#header-search").style.display = "none";
 		document.querySelector(".search__input").style.borderBottomStyle = "solid";
@@ -108,7 +129,7 @@ function start(url) {
 			authForm.style.display = "none";
 			registerForm.style.display = "flex";
 			visibleName();
-			for(let i = 0; i<inputForm.length; i++){
+			for (let i = 0; i < inputForm.length; i++) {
 				inputForm[i].value = "";
 			}
 		})
@@ -118,20 +139,7 @@ function start(url) {
 		})
 	}
 
-	authentication[0].addEventListener('click', (e) => {
-		authBlockShow(e);
-	})
-
-	authentication[1].addEventListener('click', (e) => {
-		authBlockShow(e);
-		let inputForm = document.querySelectorAll("#register_form input");
-		for(let i = 0; i<inputForm.length; i++){
-			inputForm[i].value = "";
-		}
-	})
-
 	authBlockCLose();
-	
 	function authBlockCLose() {
 		auth.style.display = "none";
 		auth_block[0].style.borderBottom = "";

@@ -59,7 +59,7 @@
                     }
                 }else{
                     echo("                
-                    <div class=\"col-lg-3 d-flex justify-content-between\" id=\"authentication\">
+                    <div class=\"col-lg-3 d-flex justify-content-between\" id=\"authentification\">
                         <button class=\"btn btn-danger\" id=\"sign\" type=\"button\">Войти</button>
                         <button class=\"btn btn-danger\" id=\"register\" type=\"button\">Зарегистрироваться</button>
                     </div>");
@@ -128,7 +128,7 @@
             </div>
         </div>
     </div>
-    <form action="form.php" method="GET">
+    <form action="formalization.php" method="POST">
         <div class="cart">
             <div class="cart__body">
                 <div class="cart__title">Корзина</div>
@@ -217,6 +217,7 @@
     <div class="confirm">
         <img src="icons/confirm.svg" alt="confirm">
     </div>
+    
     <script src="js/jquery.js"></script>
     <script src="js/script.js"></script>
     <script src="js/ajax.js"></script>
