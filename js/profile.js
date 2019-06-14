@@ -4,30 +4,27 @@ let editProfile = document.querySelector('.editProfile'),
 
 editProfile.addEventListener('click', () => {
     edit(false);
-})
-
-saveProfile.addEventListener('click',()=>{
-    edit(true);
+    console.log(editProfile);
 })
 
 function edit(condition) {
-    if(condition){
-        saveProfile.classList.remove('d-flex');
-        saveProfile.classList.add('d-none');
-        editProfile.classList.remove('d-none');
-        editProfile.classList.add('d-flex');
-        for(let i = 0; i<inputProfile.length; i++){
-            inputProfile[i].setAttribute('disabled','disabled');
-        }
-    }else{
+    saveProfile.classList.remove('d-flex');
+    saveProfile.classList.add('d-none');
+    editProfile.classList.remove('d-none');
+    editProfile.classList.add('d-flex');
+    for (let i = 0; i < inputProfile.length; i++) {
+        inputProfile[i].setAttribute('disabled', 'disabled');
+    }
+
+    if (!condition) {
         saveProfile.classList.remove('d-none');
         saveProfile.classList.add('d-flex');
         editProfile.classList.remove('d-flex');
         editProfile.classList.add('d-none');
-        for(let i = 0; i<inputProfile.length; i++){
+        for (let i = 0; i < inputProfile.length; i++) {
             inputProfile[i].removeAttribute('disabled');
         }
+        console.log(editProfile);
+        console.log(saveProfile);
     }
 }
-
-
