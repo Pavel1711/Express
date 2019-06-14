@@ -629,3 +629,16 @@ header {
     width:150px;
     margin-left:20px;
 }
+
+.profilePage{
+    padding-top:20px;
+}
+
+.profilePage h1{
+    margin-bottom: 50px;
+}
+
+.footer{
+    border-top: 1px solid rgb(220, 62, 42);
+    min-height: 150px;
+}

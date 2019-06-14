@@ -51,7 +51,7 @@
                     }else{
                         echo(
                             "<div class=\"col-lg-4 d-flex justify-content-between\">
-                            <button class=\"btn btn-danger\" id=\"profile\" type=\"button\">Мой профиль</button>
+                            <a href=\"profile.php\"><button class=\"btn btn-danger\" id=\"profile\" type=\"button\">Мой профиль</button></a>
                             <a href=\"orders.php\"><button class=\"btn btn-danger\" id=\"myOrders\" type=\"button\">Мои заказы</button></a>
                             <a href=\"exit.php\"><button class=\"btn btn-danger\" id=\"exit\" type=\"button\" name=\"logout\">Выход</button></a>
                             </div>"
@@ -200,6 +200,18 @@
 
         </div>
 
+    </div>
+
+    <div class="row footer bg-white d-flex justify-content-center align-items-center">
+        <div class="col-xl-4 h4">
+            Контакты: 8-910-367-93-09
+        </div>
+        <div class="col-xl-4 h4 d-flex justify-content-center align-items-center">
+            Мы в:
+            <img src="img/vk.png" alt="vk" class="m-2">
+            <img src="img/instagram.png" alt="insagram" class="m-2">
+            <img src="img/facebook.png" alt="facebook" class="m-2">
+        </div>
     </div>
 
     <div class="confirm">
