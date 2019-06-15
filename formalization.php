@@ -7,7 +7,7 @@
     asort($array);
     $str = implode(",",$array);
 
-    date_default_timezone_set('UTC');
+    date_default_timezone_set('UTC+3');
     $today = date("d-m-Y H:i:s"); 
 
     $link=mysqli_connect("localhost", "root", "", "express");

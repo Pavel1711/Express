@@ -30,15 +30,6 @@
                         <div id="header-search">
                         </div>
                     </div>
-                    <div class="col-lg-2">
-                        <div class="nav" id="cart">
-                            <div class="nav__item">
-                                <img src="icons/cart.svg" alt="cart">
-                                <div class="nav__badge">0</div>
-                            </div>
-                            <div class="nav__title">Корзина</div>
-                        </div>
-                    </div>
                     <?
                 $link=mysqli_connect("localhost", "root", "", "express");
                 

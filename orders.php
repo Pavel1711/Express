@@ -30,15 +30,6 @@
                         <div id="header-search">
                         </div>
                     </div>
-                    <div class="col-lg-2">
-                        <div class="nav" id="cart">
-                            <div class="nav__item">
-                                <img src="icons/cart.svg" alt="cart">
-                                <div class="nav__badge">0</div>
-                            </div>
-                            <div class="nav__title">Корзина</div>
-                        </div>
-                    </div>
                     <?
                 $link=mysqli_connect("localhost", "root", "", "express");
                 
@@ -86,55 +77,7 @@
                     </form>
                 </div>
                 <div id="orderAll" class="mb-5">
-                    <div class="numOrder w-100 bg-white p-3">
-                        <div class="headline p-3 w-100 d-flex justify-content-between align-content-center">
-                            <div>Заказ №: 123<br>Время заказа: 7:55 24.04.2015</div>
-                            <div class="moneyOrder">Стоимость:<br><span>454444.75</span><span> руб.</span></div>
-                        </div>
-                        <div class="d-flex justify-content-center goodsOrder">
-                            <img src="img/100.jpg" alt="">
-                            <p>Смартфон Xiaomi Redmi 6A 16 ГБ. Лучший подарок для молодёжи и родителей. Основная камера
-                                13 Мп, полноэкранный дисплей.</p>
-                            <div class="priceNumOrder">454.75<span> руб.</span></div>
-                        </div>
-                        <div class="d-flex justify-content-center goodsOrder">
-                            <img src="img/100.jpg" alt="">
-                            <p>Смартфон Xiaomi Redmi 6A 16 ГБ. Лучший подарок для молодёжи и родителей. Основная камера
-                                13 Мп, полноэкранный дисплей.</p>
-                            <div class="priceNumOrder">454.75<span> руб.</span></div>
-                        </div>
-                        <div class="d-flex justify-content-center goodsOrder">
-                            <img src="img/100.jpg" alt="">
-                            <p>Смартфон Xiaomi Redmi 6A 16 ГБ. Лучший подарок для молодёжи и родителей. Основная камера
-                                13 Мп, полноэкранный дисплей.</p>
-                            <div class="priceNumOrder">454.75<span> руб.</span></div>
-                        </div>
-                    </div>
-
-                    <div class="numOrder w-100 bg-white p-3">
-                        <div class="headline p-3 w-100 d-flex justify-content-between align-content-center">
-                            <div>Заказ №: 123<br>Время заказа: 7:55 24.04.2015</div>
-                            <div class="moneyOrder">Стоимость:<br><span>454444.75</span><span> руб.</span></div>
-                        </div>
-                        <div class="d-flex justify-content-center goodsOrder">
-                            <img src="img/100.jpg" alt="">
-                            <p>Смартфон Xiaomi Redmi 6A 16 ГБ. Лучший подарок для молодёжи и родителей. Основная камера
-                                13 Мп, полноэкранный дисплей.</p>
-                            <div class="priceNumOrder">454.75<span> руб.</span></div>
-                        </div>
-                        <div class="d-flex justify-content-center goodsOrder">
-                            <img src="img/100.jpg" alt="">
-                            <p>Смартфон Xiaomi Redmi 6A 16 ГБ. Лучший подарок для молодёжи и родителей. Основная камера
-                                13 Мп, полноэкранный дисплей.</p>
-                            <div class="priceNumOrder">454.75<span> руб.</span></div>
-                        </div>
-                        <div class="d-flex justify-content-center goodsOrder">
-                            <img src="img/100.jpg" alt="">
-                            <p>Смартфон Xiaomi Redmi 6A 16 ГБ. Лучший подарок для молодёжи и родителей. Основная камера
-                                13 Мп, полноэкранный дисплей.</p>
-                            <div class="priceNumOrder">454.75<span> руб.</span></div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -156,8 +99,33 @@
         </div>
     </div>
     <script src="js/jquery.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/ajax.js"></script>
+    <script>
+        ajaxOrderSort();
+        function ajaxOrderSort() {
+        $("#orderAll").html("");
+        $("#orderAll").append("<div class=\"d-flex justify-content-center align-items-center w-100\"><img src=\"img/Animation.gif\" id=\"animation\"></div>");
+        $.ajax({
+            url: "sortOrder.php",
+            type: "POST",
+            data: ({
+                priceStart: $("#priceStart").val(),
+            }),
+            dataType: "html",
+            success: function (data) {
+                document.documentElement.scrollTop="0";
+                timer=setTimeout(() => {
+                    if(data!=""){
+                        $("#orderAll").html(data); 
+                    }else{
+                        $("#orderAll").html("");
+                        $("#orderAll").append("<div class=\"d-flex justify-content-center align-items-center w-100\"><h2>У вас еще нет заказов</h2></div>");
+                    }
+                }, 750);
+                console.log(data);
+            }
+        });
+    }
+    </script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 

@@ -29,7 +29,6 @@ function start(url) {
 	function textInput() {
 		for (let i = 0; i < inputGoods.length; i++) {
 			inputGoods[i].value = titlesText[i].textContent;
-			console.log(inputGoods[i]);
 		}
 	}
 

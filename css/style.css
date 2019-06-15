@@ -606,7 +606,7 @@ header {
 }
 
 #orderAll .numOrder .headline .moneyOrder{
-    width:140px
+    max-width: 1140px;
 }
 
 #orderAll .numOrder .headline .moneyOrder span {
@@ -617,6 +617,7 @@ header {
 #orderAll .numOrder .goodsOrder img {
     width: 120px;
     height: 120px;
+    margin-right: 40px;
 }
 
 #orderAll .numOrder .goodsOrder {
@@ -628,6 +629,8 @@ header {
     font-size: 18px;
     width:150px;
     margin-left:20px;
+    text-align: right;
+    padding-right: 10px;
 }
 
 .profilePage{
