@@ -205,6 +205,32 @@ $(function () {
                 }
             }
         });
-    });            
+    });    
+    
+    $('#formCart').submit(function(e){
+        e.preventDefault();
+        $.ajax({
+            url: "formalization.php",
+            type: "POST",
+            data: $('#formCart').serialize(),
+            success:  function (data) {
+                swal({
+                    title: "Вы успешно оформили заказ!",
+                    icon: "success",
+                    button: "Хорошо!",
+                  })
+                  .then((value) => {
+                    if(value==true){
+                        $('body').css("overflow","");
+                    }
+                }); 
+                $('.cart').css("display","none");
+                $('.nav__badge').text("0");
+                $('.cart__total span').text("0");
+                $('.empty').css("display","block");
+                $('.cart__wrapper .goods__item').remove();
+            }
+        });
+    });  
 
 })

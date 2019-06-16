@@ -153,6 +153,7 @@ function start(url) {
 		document.querySelector(".search__input").style.borderBottomStyle = "solid";
 	}
 
+	closeCart();
 	function closeCart() {
 		cart.style.display = 'none';
 		document.body.style.overflow = '';

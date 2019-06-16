@@ -128,12 +128,12 @@
             </div>
         </div>
     </div>
-    <form action="formalization.php" method="POST">
+    <form action="formalization.php" method="POST" id="formCart">
         <div class="cart">
             <div class="cart__body">
                 <div class="cart__title">Корзина</div>
                 <div class="cart__total">Общая сумма: <span>0</span> руб</div>
-                <input type="text" class="inputPrice" name="inputPrice" style="display:none">
+                <input type="text" class="inputPrice d-none" name="inputPrice">
                 <hr>
                 <div class="cart__wrapper">
                     <div class="empty">

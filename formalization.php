@@ -16,5 +16,5 @@
     $email = $data['email'];
 
     mysqli_query($link, "INSERT INTO orders SET email='".$email."',time='".$today."',goods='".$str."',money='".$inputPrice."'");
-    header("Location: index.php");exit();
+    echo("1");
 ?>
