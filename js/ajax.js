@@ -163,6 +163,17 @@ $(function () {
                             $('body').css("overflow","");
                         }
                       }); 
+                }else if(response == -3){
+                    swal({
+                        title: "Логин должен состоять не только из цифр",
+                        icon: "error",
+                        button: "Исправить",
+                      })
+                      .then((value) => {
+                        if(value==true){
+                            $('body').css("overflow","");
+                        }
+                      }); 
                 }
             },
             error: function(response) {
@@ -170,5 +181,30 @@ $(function () {
             }
         });
     });
+
+    $('#auth_form').submit(function(e){
+        e.preventDefault();
+        $.ajax({
+            url: "auth.php",
+            type: "POST",
+            data: $('#auth_form').serialize(),
+            success:  function (data) {
+                if (data == 1){
+                    location.reload();
+                }else if(data == 0){
+                    swal({
+                        title: "Неверный логин или пароль!",
+                        icon: "error",
+                        button: "Хорошо!",
+                      })
+                      .then((value) => {
+                        if(value==true){
+                            $('body').css("overflow","");
+                        }
+                    }); 
+                }
+            }
+        });
+    });            
 
 })

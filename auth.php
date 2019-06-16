@@ -21,12 +21,12 @@
                 $hash = md5(generateCode(10));
                 mysqli_query($link, "UPDATE profile SET hash='".$hash."'WHERE id='".$data['id']."'");
                 setcookie("id", $data['id'], time()+60*60*24*30);
-                setcookie("hash", $hash, time()+60*60*24*30,null,null,null,true);             
-                header("Location: index.php");exit();
-            }}else{
-                echo("Неверное имя пользователя или пароль!");
+                setcookie("hash", $hash, time()+60*60*24*30,null,null,null,true);
+                echo("1");             
+                // header("Location: index.php");exit();
             }
-    }else{
-        echo("Все поля обязательны для заполнения");
+        }else{
+            echo("0");
+        }
     }
 ?>

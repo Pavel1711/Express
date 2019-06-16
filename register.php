@@ -7,7 +7,10 @@ if(!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['email']
     }else if(strlen($_POST['email']) < 3 or strlen($_POST['email']) > 30)
     {
         echo("-2");
-    }else{
+    }else if(ctype_digit($_POST['email'])) {
+        echo ("-3");
+    }
+    else{
     mysql_connect("localhost","root","") or die ("Невозможно подключиться к серверу");
     mysql_select_db("express") or die ("Нет такой таблицы");
 
