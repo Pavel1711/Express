@@ -172,6 +172,17 @@
                             $('body').css("overflow","");
                         }
                       }); 
+                }else if(response == -3){
+                    swal({
+                        title: "Логин должен состоять не только из цифр",
+                        icon: "error",
+                        button: "Исправить",
+                      })
+                      .then((value) => {
+                        if(value==true){
+                            $('body').css("overflow","");
+                        }
+                      }); 
                 }
             },
             error: function(response) {
