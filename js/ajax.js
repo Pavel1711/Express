@@ -4,7 +4,6 @@ $(function () {
 
     $(".search__input").bind("keyup", function () {
         ajaxSearch();
-        openCart();
     });
 
     $(".increase").bind("click", function () {
@@ -76,6 +75,12 @@ $(function () {
             }
         });
     }
+
+    $('#header-search').bind("click", function (e) {
+        $('.search__input').val(e.target.innerText);
+        $("#header-search").css("display","none");
+        $(".search__input").css("border-bottom-style","solid");
+    });
 
     function ajaxSearch() {
 
@@ -249,6 +254,7 @@ $(function () {
     $(".btn-warning").bind("click", function (e) {
         ajaxOrderSort();
     });
+    
     ajaxOrderSort();
     function ajaxOrderSort() {
     $("#orderAll").html("");
@@ -278,6 +284,6 @@ $(function () {
         }
     });
     
-}
+    }
 
 })

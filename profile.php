@@ -21,11 +21,12 @@
                 </div>
                 <div class="row align-items-center">
                     <div class="col-lg-4">
-                        <form class="search" action="#">
+                        <form class="search" action="goods.php">
                             <input type="text" placeholder="Я ищу..." class="search__input">
-                            <button>
-                                <img src="icons/glass.svg" alt="search">
-                            </button>
+                            <div>
+                                <input type="submit" id="searchBtn" value="" class="position-absolute">
+                                <img src="icons/glass.svg" alt="search" class="position-absolute">
+                            </div>
                         </form>
                         <div id="header-search">
                         </div>
@@ -124,9 +125,6 @@
             </div>
         </div>
 
-        <div class="confirm">
-            <img src="icons/confirm.svg" alt="confirm">
-        </div>
     </div>
     <script src="js/jquery.js"></script>
     <script src="js/profile.js"></script>

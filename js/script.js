@@ -166,7 +166,8 @@ function start(url) {
 		btn.addEventListener('click', () => {
 			let item = products[i].cloneNode(true),
 				trigger = item.querySelector('button'),
-				removeBtn = document.createElement('div');
+				removeBtn = document.createElement('div'),
+				child = document.querySelector('.cart__wrapper').children.length;
 
 			document.querySelector("#header-search").style.display = "none";
 			document.querySelector(".search__input").style.borderBottomStyle = "solid";
@@ -182,6 +183,18 @@ function start(url) {
 			if (empty) {
 				empty.style.display = "none";
 			}
+
+			swal({
+				title: "Товар добавлен в корзину!",
+				text:`Товаров в корзине: ${child}`,
+				icon: "success",
+				button: "Хорошо",
+			  })
+			  .then((value) => {
+				if(value==true){
+					$('body').css("overflow","");
+				}
+			  }); 
 
 			calcGoods();
 			calcTotal();
@@ -201,23 +214,6 @@ function start(url) {
 		});
 	}
 	sliceTitle();
-	//Анимация при клике на товар
-	function showConfirm() {
-		confirm.style.display = 'block';
-		let counter = 100;
-		const id = setInterval(frame, 10);
-
-		function frame() {
-			if (counter == 10) {
-				clearInterval(id);
-				confirm.style.display = 'none';
-			} else {
-				counter--;
-				confirm.style.transform = `translateY(-${counter}px)`;
-				confirm.style.opacity = '.' + counter;
-			}
-		}
-	}
 
 	function calcGoods(i) {
 		const items = cartWrapper.querySelectorAll('.goods__item');

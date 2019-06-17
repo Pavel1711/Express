@@ -20,11 +20,12 @@
             </div>
             <div class="row align-items-center">
                 <div class="col-lg-4">
-                    <form class="search" action="#">
+                    <form class="search" action="goods.php">
                         <input type="text" placeholder="Я ищу..." class="search__input">
-                        <button>
-                            <img src="icons/glass.svg" alt="search">
-                        </button>
+                        <div>
+                            <input type="submit" id="searchBtn" value="">
+                            <img src="icons/glass.svg" alt="search" class="position-absolute">
+                        </div>
                     </form>
                     <div id="header-search">
                     </div>
@@ -213,15 +214,11 @@
             <img src="img/facebook.png" alt="facebook" class="m-2">
         </div>
     </div>
-
-    <div class="confirm">
-        <img src="icons/confirm.svg" alt="confirm">
-    </div>
     
     <script src="js/jquery.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/ajax.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>

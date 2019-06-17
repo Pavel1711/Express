@@ -64,22 +64,22 @@
         </header>
 
         <div class="row d-flex justify-content-center">
-            <div class="col-xl-8 order">
-                <h1>Мои заказы</h1>
-                <div class="order-sort w-100 bg-white">
-                    <form action="sortOrder.php" method="POST" class="d-flex justify-content-between align-items-center">
-                        <h4> Введите код заказа</h4>
-                        <div class="input-group" style="width:75%!important">
-                            <input id="numOrder" type="number" class="form-control w-25">
-                            <span class="input-group-btn">
-                                <button class="btn btn-warning" type="button">Искать</button>
-                            </span>
-                        </div>
-                    </form>
+            <div class="col-xl-8 mt-4">
+                <h2>Смартфон Xiaomi</h2>
+
+                <div class="goods w-100 bg-white mt-4 mb-4 row d-flex justify-content-center">
+                    <div class="col-xl-4">
+                        <img src="img/100.jpg" alt="" style="height:300px" class="mt-4">
+                    </div>
+                    <div class="col-xl-7 ml-5 h3 mt-4 mb-4 descriptionGoods">
+                        <p class="h4 mb-3">Цена: <span class="h2 text-danger">5702 </span><span class="text-danger">руб.</span></p>
+                        <p class="h4 mb-3">Категория: <span>Смартфон</span></p>
+                        <p class="h4 mb-3">Цвет: <span>черный</span></p>
+                        <p class="h4 mb-3">Доступно в наличии: <span>20</span></p>
+                        <p class="h4 mb-3">Описание: <span class="h5">Смартфон Xiaomi Redmi 6A 16 ГБ. Лучший подарок для молодёжи и родителей. Основная камера 13 Мп, полноэкранный дисплей.</span></p>
+                    </div>
                 </div>
-                <div id="orderAll" class="mb-5">
-                    
-                </div>
+                
             </div>
         </div>
 
@@ -94,9 +94,10 @@
                 <img src="img/facebook.png" alt="facebook" class="m-2">
             </div>
         </div>
-        
+
     </div>
     <script src="js/jquery.js"></script>
+    <script src="js/script.js"></script>
     <script src="js/ajax.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>

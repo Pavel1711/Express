@@ -52,6 +52,7 @@ header {
     min-height: 30px;
     padding-left: 16px;
     margin: 10px 0 5px;
+    cursor: pointer;
 }
 
 .search {
@@ -73,7 +74,7 @@ header {
     outline: 0
 }
 
-.search button {
+.search #searchBtn {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -81,15 +82,26 @@ header {
     -ms-flex-align: center;
     align-items: center;
     width: 30px;
-    height: 30px;
+    height: 100%;
     background: #dc3e2a;
     border: none;
     border-radius: 0 4px 4px 0;
-    cursor: pointer
 }
 
-.search button:focus {
+.search #searchBtn:focus {
     outline: 0
+}
+
+.search div{
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+}
+
+.search div img{
+    left:79%;
+    top:20%;
 }
 
 .nav {
@@ -640,6 +652,8 @@ header {
 .profilePage h1{
     margin-bottom: 50px;
 }
+
+
 
 .footer{
     border-top: 1px solid rgb(220, 62, 42);
