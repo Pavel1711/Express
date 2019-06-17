@@ -64,11 +64,11 @@ if($colorBlue=="true"){
     mysql_connect("localhost","root","") or die ("Невозможно подключиться к серверу");
     mysql_select_db("express") or die ("Нет такой таблицы");
     if($increase=="false" && $descending=="false"){
-        $rows = mysql_query("SELECT *FROM goods where price>$priceStart AND price<$priceEnd $sqlGoodsOne $sqlGoodsTwo $sqlGoodsThree $sqlGoodsFour $sqlColorBlack $sqlColorWhite $sqlColorGrey $sqlColorBlue");
+        $rows = mysql_query("SELECT *FROM goods where price>$priceStart AND price<$priceEnd AND quantity>0 $sqlGoodsOne $sqlGoodsTwo $sqlGoodsThree $sqlGoodsFour $sqlColorBlack $sqlColorWhite $sqlColorGrey $sqlColorBlue");
     }else if($increase=="true"){
-        $rows = mysql_query("SELECT *FROM goods where price>$priceStart AND price<$priceEnd $sqlGoodsOne $sqlGoodsTwo $sqlGoodsThree $sqlGoodsFour $sqlColorBlack $sqlColorWhite $sqlColorGrey $sqlColorBlue ORDER BY price ASC");
+        $rows = mysql_query("SELECT *FROM goods where price>$priceStart AND price<$priceEnd AND quantity>0 $sqlGoodsOne $sqlGoodsTwo $sqlGoodsThree $sqlGoodsFour $sqlColorBlack $sqlColorWhite $sqlColorGrey $sqlColorBlue ORDER BY price ASC");
     }else if($descending=="true"){
-        $rows = mysql_query("SELECT *FROM goods where price>$priceStart AND price<$priceEnd $sqlGoodsOne $sqlGoodsTwo $sqlGoodsThree $sqlGoodsFour $sqlColorBlack $sqlColorWhite $sqlColorGrey $sqlColorBlue ORDER BY price DESC");
+        $rows = mysql_query("SELECT *FROM goods where price>$priceStart AND price<$priceEnd AND quantity>0 $sqlGoodsOne $sqlGoodsTwo $sqlGoodsThree $sqlGoodsFour $sqlColorBlack $sqlColorWhite $sqlColorGrey $sqlColorBlue ORDER BY price DESC");
     }
     while($stroka = mysql_fetch_array($rows)){
         echo 
