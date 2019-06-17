@@ -66,10 +66,10 @@
             <div class="col-xl-8 order">
                 <h1>Мои заказы</h1>
                 <div class="order-sort w-100 bg-white">
-                    <form action="" method="POST" class="d-flex justify-content-between align-items-center">
+                    <form action="sortOrder.php" method="POST" class="d-flex justify-content-between align-items-center">
                         <h4> Введите код заказа</h4>
                         <div class="input-group" style="width:75%!important">
-                            <input type="number" class="form-control w-25">
+                            <input id="numOrder" type="number" class="form-control w-25">
                             <span class="input-group-btn">
                                 <button class="btn btn-warning" type="button">Искать</button>
                             </span>
@@ -99,33 +99,7 @@
         </div>
     </div>
     <script src="js/jquery.js"></script>
-    <script>
-        ajaxOrderSort();
-        function ajaxOrderSort() {
-        $("#orderAll").html("");
-        $("#orderAll").append("<div class=\"d-flex justify-content-center align-items-center w-100\"><img src=\"img/Animation.gif\" id=\"animation\"></div>");
-        $.ajax({
-            url: "sortOrder.php",
-            type: "POST",
-            data: ({
-                priceStart: $("#priceStart").val(),
-            }),
-            dataType: "html",
-            success: function (data) {
-                document.documentElement.scrollTop="0";
-                timer=setTimeout(() => {
-                    if(data!=""){
-                        $("#orderAll").html(data); 
-                    }else{
-                        $("#orderAll").html("");
-                        $("#orderAll").append("<div class=\"d-flex justify-content-center align-items-center w-100\"><h2>У вас еще нет заказов</h2></div>");
-                    }
-                }, 750);
-                console.log(data);
-            }
-        });
-    }
-    </script>
+    <script src="js/ajax.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 

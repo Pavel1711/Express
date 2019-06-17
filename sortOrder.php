@@ -1,15 +1,23 @@
-<?
+<?  
+    $numOrder = $_POST['numOrder'];
+
+    if($numOrder==""){
+        $searchNumOrder="";
+    }else{
+        $searchNumOrder="AND id = $numOrder";
+    }
+
     $link=mysqli_connect("localhost", "root", "", "express");
     $login = mysqli_query($link, "SELECT email FROM profile WHERE id=$_COOKIE[id]");
     $data = mysqli_fetch_assoc($login);
     $email = $data['email'];
  
-    $order = mysqli_query($link,"SELECT *FROM orders WHERE email='".$email."'");//Возвращает все заказы пользователя
+    $order = mysqli_query($link,"SELECT *FROM orders WHERE email='".$email."' $searchNumOrder ");//Возвращает все заказы пользователя
     $dataOrder = mysqli_fetch_assoc($order);
     $numRowsOrder = mysqli_num_rows($order);
 
     for($i = 0; $i < $numRowsOrder; $i++){
-        $sqlNumOrder = mysqli_query($link,"SELECT *FROM orders WHERE email='".$email."' LIMIT $i,1");
+        $sqlNumOrder = mysqli_query($link,"SELECT *FROM orders WHERE email='".$email."' $searchNumOrder LIMIT $i,1");
         $dataNumOrder = mysqli_fetch_assoc($sqlNumOrder);
 
         $str = explode(",",$dataNumOrder['goods']);

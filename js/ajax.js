@@ -214,16 +214,29 @@ $(function () {
             type: "POST",
             data: $('#formCart').serialize(),
             success:  function (data) {
-                swal({
-                    title: "Вы успешно оформили заказ!",
-                    icon: "success",
-                    button: "Хорошо!",
-                  })
-                  .then((value) => {
-                    if(value==true){
-                        $('body').css("overflow","");
-                    }
-                }); 
+                if(data == 1){
+                    swal({
+                        title: "Вы успешно оформили заказ!",
+                        icon: "success",
+                        button: "Хорошо!",
+                      })
+                      .then((value) => {
+                        if(value==true){
+                            $('body').css("overflow","");
+                        }
+                    }); 
+                }else if(data == 0){
+                    swal({
+                        title: "Для оформления заказа необходимо авторизоваться!",
+                        icon: "error",
+                        button: "Хорошо!",
+                      })
+                      .then((value) => {
+                        if(value==true){
+                            $('body').css("overflow","");
+                        }
+                    }); 
+                }
                 $('.cart').css("display","none");
                 $('.nav__badge').text("0");
                 $('.cart__total span').text("0");
@@ -232,5 +245,39 @@ $(function () {
             }
         });
     });  
+
+    $(".btn-warning").bind("click", function (e) {
+        ajaxOrderSort();
+    });
+    ajaxOrderSort();
+    function ajaxOrderSort() {
+    $("#orderAll").html("");
+    $("#orderAll").append("<div class=\"d-flex justify-content-center align-items-center w-100\"><img src=\"img/Animation.gif\" id=\"animation\"></div>");
+    $.ajax({
+        url: "sortOrder.php",
+        type: "POST",
+        data: ({
+            numOrder: $("#numOrder").val(),
+        }),
+        dataType: "html",
+        success: function (data) {
+            document.documentElement.scrollTop="0";
+            timer=setTimeout(() => {
+                if(data!=""){
+                    $("#orderAll").html(data); 
+                }else{
+                    if($("#numOrder").val() != ""){
+                        $("#orderAll").html("");
+                        $("#orderAll").append("<div class=\"d-flex justify-content-center align-items-center w-100 p-4\"><h2>У вас нет заказа с указанным номером</h2></div>");
+                    }else{
+                        $("#orderAll").html("");
+                        $("#orderAll").append("<div class=\"d-flex justify-content-center align-items-center w-100 p-4\"><h2>У вас еще нет заказов</h2></div>");
+                    };
+                }
+            }, 750);
+        }
+    });
+    
+}
 
 })
