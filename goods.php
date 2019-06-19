@@ -64,22 +64,28 @@
         </header>
 
         <div class="row d-flex justify-content-center">
-            <div class="col-xl-8 mt-4">
-                <h2>Смартфон Xiaomi</h2>
-
-                <div class="goods w-100 bg-white mt-4 mb-4 row d-flex justify-content-center">
-                    <div class="col-xl-4">
-                        <img src="img/100.jpg" alt="" style="height:300px" class="mt-4">
-                    </div>
-                    <div class="col-xl-7 ml-5 h3 mt-4 mb-4 descriptionGoods">
-                        <p class="h4 mb-3">Цена: <span class="h2 text-danger">5702 </span><span class="text-danger">руб.</span></p>
-                        <p class="h4 mb-3">Категория: <span>Смартфон</span></p>
-                        <p class="h4 mb-3">Цвет: <span>черный</span></p>
-                        <p class="h4 mb-3">Доступно в наличии: <span>20</span></p>
-                        <p class="h4 mb-3">Описание: <span class="h5">Смартфон Xiaomi Redmi 6A 16 ГБ. Лучший подарок для молодёжи и родителей. Основная камера 13 Мп, полноэкранный дисплей.</span></p>
-                    </div>
-                </div>
-                
+            <div class="col-xl-8 mt-4 mb-4">
+                <?
+                    $kod = $_GET['goodsText'];      
+                    $link=mysqli_connect("localhost", "root", "", "express");
+                    $sqlGoods = mysqli_query($link, "SELECT *FROM goods where kod=$kod[0]");
+                    $data = mysqli_fetch_assoc($sqlGoods);
+                    echo("
+                        <h2>".$data['title']."</h2>
+                        <div class=\"goods w-100 bg-white mt-4 mb-4 row d-flex justify-content-center mt-5 pb-4\">
+                            <div class=\"col-xl-4\">
+                                <img src=".$data['IMG']." alt=\"goods\" style=\"height:310px\" class=\"mt-4\">
+                            </div>
+                            <div class=\"col-xl-7 ml-5 h3 mt-4 mb-4 descriptionGoods\">
+                                <p class=\"h4 mb-3\">Цена: <span class=\"h2 text-danger\">".$data['price']."</span><span class=\"text-danger\">руб.</span></p>
+                                <p class=\"h4 mb-3\">Категория: <span>".$data['kategory']."</span></p>
+                                <p class=\"h4 mb-3\">Цвет: <span>".$data['color']."</span></p>
+                                <p class=\"h4 mb-3\">Доступно в наличии: <span>".$data['quantity']."</span></p>
+                                <p class=\"h4 mb-3\">Описание: <span class=\"h5\">".$data['description']."</span></p>
+                            </div>
+                        </div>
+                    ")
+                ?>                
             </div>
         </div>
 
@@ -97,8 +103,40 @@
 
     </div>
     <script src="js/jquery.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/ajax.js"></script>
+    <script>
+        $('#header-search').bind("click", function (e) {
+            $('.search__input').val(e.target.innerText);
+            $("#header-search").css("display","none");
+            $(".search__input").css("border-bottom-style","solid");
+        });
+        $(".search__input").bind("keyup", function () {
+            ajaxSearch();
+        });
+        function ajaxSearch() {
+            $.ajax({
+                url: "search.php",
+                type: "GET",
+                data: ({
+                    searchInput: $(".search__input").val()
+                }),
+                dataType: "html",
+                success: function (data) {
+
+                    if(data!=""){
+                        $("#header-search").html(data);
+                        $(".search__input").css("border-bottom-style","none");
+                        $("#header-search").css("display","block");
+                    }else{
+                        $("#header-search").css("display","none");
+                        $(".search__input").css("border-bottom-style","solid");
+                    }
+                }
+            });
+        }
+    </script>
+    <script>
+        //  window.location.pathname = window.location.pathname + "/100";
+    </script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 

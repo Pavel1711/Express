@@ -206,7 +206,7 @@ header {
     margin-right: 35px;
     -webkit-transition: .3s all;
     transition: .3s all;
-    max-height: 440px;
+    max-height: 500px;
 }
 
 .goods__item:hover {
@@ -261,7 +261,8 @@ header {
     font-weight: 700
 }
 
-.goods__btn {
+.goods__btn,
+.goods__confirm {
     width: 100%;
     height: 40px;
     background-color: #dc3e2a;
@@ -273,11 +274,13 @@ header {
     cursor: pointer
 }
 
-.goods__btn:focus {
+.goods__btn:focus,
+.goods__confirm:focus {
     outline: 0
 }
 
-.goods__btn:hover {
+.goods__btn:hover,
+.goods__confirm:hover {
     -webkit-box-shadow: 0 0 15px rgba(220, 62, 42, .7);
     box-shadow: 0 0 15px rgba(220, 62, 42, .7)
 }
@@ -360,7 +363,7 @@ header {
     left: 50%;
     width: 1024px;
     min-height: 200px;
-    max-height: 640px;
+    max-height: 740px;
     background-color: #fff;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);

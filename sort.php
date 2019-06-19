@@ -73,16 +73,19 @@ if($colorBlue=="true"){
     while($stroka = mysql_fetch_array($rows)){
         echo 
         "<div class=\"goods__item\">
-            <p>".$stroka['kod']."</p>
-            <img class=\"goods__img\" src=".$stroka['IMG'].">
-            <div class=\"goods__quantity\">Доступно в наличии: ".$stroka['quantity']." </div>
-                <div class=\"goods__title\">"
-                .$stroka['description']."
-                </div>
-                <div class=\"goods__price\">
-                    <span>".$stroka['price']."</span> руб/шт
-                </div>
-            <input class=\"form-control inputGoods\" type=\"text\" name=\"goodsText[]\">
+            <form action=\"goods.php\" method=\"GET\">
+                <p>".$stroka['kod']."</p>
+                <img class=\"goods__img\" src=".$stroka['IMG'].">
+                <div class=\"goods__quantity\">Доступно в наличии: ".$stroka['quantity']." </div>
+                    <div class=\"goods__title\">"
+                    .$stroka['description']."
+                    </div>
+                    <div class=\"goods__price\">
+                        <span>".$stroka['price']."</span> руб/шт
+                    </div>
+                <input class=\"form-control inputGoods\" type=\"text\" name=\"goodsText[]\">
+                <input type=\"submit\" class=\"goods__confirm\" value=\"Посмотреть товар\">
+            </form>
             <button class=\"goods__btn\">Добавить в корзину</button>
         </div>";
         }

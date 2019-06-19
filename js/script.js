@@ -32,6 +32,8 @@ function start(url) {
 		}
 	}
 
+	console.log(window.location.pathname);
+
 	child();
 
 	function child() {
@@ -173,7 +175,6 @@ function start(url) {
 			document.querySelector(".search__input").style.borderBottomStyle = "solid";
 
 			trigger.remove();
-			showConfirm();
 
 			removeBtn.classList.add('goods__item-remove');
 			removeBtn.innerHTML = '&times';
